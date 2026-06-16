@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Porch Love Utah | Missionary Decorations</title>
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --background-color: #f9f9f9;
+      --venmo-color: #008CFF;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background-color);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    p.subtitle {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    input[type="text"], input[type="date"], select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+    .radio-group {
+      display: flex;
+      gap: 1rem;
+    }
+    button {
+      background-color: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1.1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    #venmo-section {
+      display: none;
+      text-align: center;
+      margin-top: 2rem;
+      padding: 2rem;
+      background-color: #e8f4fd;
+      border-radius: 8px;
+    }
+    .venmo-button {
+      display: inline-block;
+      background-color: var(--venmo-color);
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Porch Love Utah</h1>
+    <p class="subtitle">Beautiful Porch Decorations for Mission Homecomings & Farewells</p>
+  </header>
+
+  <div class="container">
+    <form id="orderForm">
+      <h2>Order Form</h2>
+      
+      <div class="form-group">
+        <label for="customerName">Your Name</label>
+        <input type="text" id="customerName" name="customerName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="dropoffDate">Date Needed for Drop-off</label>
+        <input type="date" id="dropoffDate" name="dropoffDate" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pickupDate">Date Needed for Pick-up</label>
+        <input type="date" id="pickupDate" name="pickupDate" required>
+      </div>
+
+      <div class="form-group">
+        <label>Male or Female Missionary</label>
+        <div class="radio-group">
+          <label><input type="radio" name="gender" value="Elder" required> Elder (Male)</label>
+          <label><input type="radio" name="gender" value="Sister"> Sister (Female)</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="missionaryName">Missionary Name</label>
+        <input type="text" id="missionaryName" name="missionaryName" placeholder="e.g., Elder Smith" required>
+      </div>
+
+      <div class="form-group">
+        <label for="missionName">Mission</label>
+        <input type="text" id="missionName" name="missionName" placeholder="e.g., Utah Provo Mission" required>
+      </div>
+
+      <div class="form-group">
+        <label for="datesServing">Dates Serving</label>
+        <input type="text" id="datesServing" name="datesServing" placeholder="e.g., Aug 2024 - Aug 2026" required>
+      </div>
+
+      <div class="form-group">
+        <label>Garage Door Size</label>
+        <div class="radio-group">
+          <label><input type="radio" name="garageSize" value="Single" required> Single</label>
+          <label><input type="radio" name="garageSize" value="Double"> Double</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Garage Door Material</label>
+        <div class="radio-group">
+          <label><input type="radio" name="garageMaterial" value="Metal" required> Metal</label>
+          <label><input type="radio" name="garageMaterial" value="Wood"> Wood</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="posterOption">Front Door Poster</label>
+        <select id="posterOption" name="posterOption" required>
+          <option value="">Select an option...</option>
+          <option value="Wanted">Wanted (Please provide one)</option>
+          <option value="Doing my own thing">Doing my own thing</option>
+        </select>
+      </div>
+
+      <button type="submit">Submit Order & Pay</button>
+    </form>
+
+    <!-- Venmo & Confirmation Section -->
+    <div id="venmo-section">
+      <h2>Order Submitted! 🎉</h2>
+      <p>Thank you for choosing Porch Love Utah! Please complete your payment via Venmo to finalize your reservation.</p>
+      <!-- Replace 'yourvenmohandle' with your actual Venmo username -->
+      <a href="https://venmo.com/yourvenmohandle" target="_blank" class="venmo-button">Pay with Venmo</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent page reload
+
+      // 1. Collect Form Data
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+
+      // 2. Send email via your backend (Google Apps Script / Formspree)
+      // NOTE: Replace the URL below with your actual endpoint later.
+      const endpointURL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
+      
+      /* Uncomment this block when you have your backend URL ready
+      fetch(endpointURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(response => {
+        console.log("Form successfully submitted.");
+      }).catch(error => {
+        console.error("Error submitting form:", error);
+      });
+      */
+
+      // 3. Hide the form and show the Venmo payment step
+      document.getElementById('orderForm').style.display = 'none';
+      document.getElementById('venmo-section').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
