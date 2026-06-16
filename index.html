@@ -195,7 +195,7 @@
               // LIVE - fetch connected to Google Apps Script backend
       fetch(endpointURL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify(data)
       }).then(response => {
         console.log("Form successfully submitted.");
