@@ -4,207 +4,528 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Porch Love Utah | Missionary Decorations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary-color: #2c3e50;
-      --secondary-color: #3498db;
-      --background-color: #f9f9f9;
-      --venmo-color: #008CFF;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--background-color);
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: var(--primary-color);
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Lato', sans-serif; background: #f5f0eb; color: #2d2d2d; }
+
+    /* HERO HEADER */
+    .hero {
+      background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 50%, #3d2b1f 100%);
       color: white;
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 3.5rem 1.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
     }
-    h1 {
-      margin: 0;
-      font-size: 2.5rem;
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="80" cy="80" r="1.5" fill="rgba(255,255,255,0.05)"/><circle cx="60" cy="30" r="1" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+      pointer-events: none;
     }
-    p.subtitle {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #f0d9b5;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 0.4rem 1.2rem;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
     }
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
     }
-    .form-group {
-      margin-bottom: 1.5rem;
+    .hero h1 em {
+      font-style: italic;
+      color: #f0d9b5;
     }
-    label {
-      display: block;
-      font-weight: bold;
+    .hero-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #f0d9b5, transparent);
+      margin: 1rem auto;
+      border-radius: 2px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.5px;
+      max-width: 500px;
+      margin: 0 auto 1.5rem;
+    }
+    .hero-features {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .hero-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .hero-feature span { font-size: 1rem; }
+
+    /* GALLERY */
+    .gallery-section {
+      background: #fff;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #8b6f47;
       margin-bottom: 0.5rem;
     }
-    input[type="text"], input[type="date"], select {
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #1a2a3a;
+      margin-bottom: 0.75rem;
+    }
+    .section-sub {
+      color: #666;
+      font-size: 0.95rem;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .gallery-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      position: relative;
+      aspect-ratio: 3/4;
+      background: #ddd;
+    }
+    .gallery-card img {
       width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .gallery-card:hover img { transform: scale(1.04); }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(26,42,58,0.85));
+      color: white;
+      padding: 1.5rem 1rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* HOW IT WORKS */
+    .how-section {
+      background: #f5f0eb;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .step-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    }
+    .step-number {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, #1a2a3a, #2c3e50);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
       font-size: 1rem;
+      margin: 0 auto 0.75rem;
+    }
+    .step-card h3 { font-size: 0.95rem; color: #1a2a3a; margin-bottom: 0.4rem; }
+    .step-card p { font-size: 0.82rem; color: #777; line-height: 1.5; }
+
+    /* FORM */
+    .form-section {
+      padding: 3rem 1.5rem;
+      background: #fff;
+    }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .form-header {
+      background: linear-gradient(135deg, #1a2a3a, #2c3e50);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    .form-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.3rem;
+    }
+    .form-header p { font-size: 0.9rem; color: rgba(255,255,255,0.75); }
+    .form-body { padding: 2rem; }
+    .form-section-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #8b6f47;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.5rem;
+      margin: 1.5rem 0 1rem;
+    }
+    .form-section-title:first-child { margin-top: 0; }
+    .form-group { margin-bottom: 1.2rem; }
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #444;
+      margin-bottom: 0.4rem;
+    }
+    input[type=text], input[type=date], select, textarea {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: #333;
+      background: #fafafa;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #2c3e50;
+      box-shadow: 0 0 0 3px rgba(44,62,80,0.1);
+      background: #fff;
     }
     .radio-group {
       display: flex;
       gap: 1rem;
+      flex-wrap: wrap;
     }
-    button {
-      background-color: var(--secondary-color);
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #f5f0eb;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      flex: 1;
+      min-width: 100px;
+      justify-content: center;
+    }
+    .radio-option input { display: none; }
+    .radio-option.selected, .radio-option:has(input:checked) {
+      background: #1a2a3a;
+      border-color: #1a2a3a;
+      color: white;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #1a2a3a, #2c3e50);
       color: white;
       border: none;
-      padding: 12px 20px;
-      font-size: 1.1rem;
-      border-radius: 4px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      letter-spacing: 0.5px;
       cursor: pointer;
-      width: 100%;
-      font-weight: bold;
+      margin-top: 1.5rem;
+      transition: opacity 0.2s, transform 0.1s;
     }
-    button:hover {
-      background-color: #2980b9;
-    }
+    .submit-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+    .submit-btn:active { transform: translateY(0); }
+
+    /* CONFIRMATION */
     #venmo-section {
       display: none;
       text-align: center;
-      margin-top: 2rem;
-      padding: 2rem;
-      background-color: #e8f4fd;
-      border-radius: 8px;
+      padding: 2.5rem 2rem;
     }
-    .venmo-button {
+    .confirm-icon { font-size: 3rem; margin-bottom: 1rem; }
+    #venmo-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #1a2a3a;
+      margin-bottom: 0.5rem;
+    }
+    #venmo-section p { color: #666; margin-bottom: 1.5rem; }
+    .venmo-btn {
       display: inline-block;
-      background-color: var(--venmo-color);
+      background: #008CFF;
       color: white;
-      padding: 10px 20px;
+      padding: 0.9rem 2rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
       text-decoration: none;
-      border-radius: 4px;
-      font-weight: bold;
-      margin-top: 1rem;
+      transition: opacity 0.2s;
+    }
+    .venmo-btn:hover { opacity: 0.9; }
+
+    /* FOOTER */
+    footer {
+      background: #1a2a3a;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.82rem;
+    }
+    footer strong { color: rgba(255,255,255,0.9); }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Porch Love Utah</h1>
-    <p class="subtitle">Beautiful Porch Decorations for Mission Homecomings & Farewells</p>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-badge">Utah Valley's Favorite</div>
+    <h1>Porch <em>Love</em> Utah</h1>
+    <div class="hero-divider"></div>
+    <p>Beautiful porch decorations for missionary homecomings &amp; farewells</p>
+    <div class="hero-features">
+      <div class="hero-feature"><span>&#127968;</span> Porch &amp; garage setups</div>
+      <div class="hero-feature"><span>&#127988;</span> Custom mission flags</div>
+      <div class="hero-feature"><span>&#10003;</span> Drop-off &amp; pick-up included</div>
+    </div>
   </header>
 
-  <div class="container">
-    <form id="orderForm">
-      <h2>Order Form</h2>
-      
-      <div class="form-group">
-        <label for="customerName">Your Name</label>
-        <input type="text" id="customerName" name="customerName" required>
+  <!-- GALLERY -->
+  <section class="gallery-section">
+    <p class="section-label">Our Work</p>
+    <h2 class="section-title">See the Decorations</h2>
+    <p class="section-sub">Every setup is customized with your missionary's name, mission, and personal details.</p>
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <img src="images/porch-door.jpg" alt="Custom front door poster with missionary name and mission flags">
+        <div class="gallery-caption">Custom Front Door Poster</div>
       </div>
-
-      <div class="form-group">
-        <label for="dropoffDate">Date Needed for Drop-off</label>
-        <input type="date" id="dropoffDate" name="dropoffDate" required>
+      <div class="gallery-card">
+        <img src="images/suitcase-globe.jpg" alt="Vintage suitcases with globe and mission photo display">
+        <div class="gallery-caption">Vintage Suitcase Display</div>
       </div>
-
-      <div class="form-group">
-        <label for="pickupDate">Date Needed for Pick-up</label>
-        <input type="date" id="pickupDate" name="pickupDate" required>
+      <div class="gallery-card">
+        <img src="images/garage-banner.jpg" alt="Full garage banner with missionary suit design">
+        <div class="gallery-caption">Garage Door Banner</div>
       </div>
-
-      <div class="form-group">
-        <label>Male or Female Missionary</label>
-        <div class="radio-group">
-          <label><input type="radio" name="gender" value="Elder" required> Elder (Male)</label>
-          <label><input type="radio" name="gender" value="Sister"> Sister (Female)</label>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="missionaryName">Missionary Name</label>
-        <input type="text" id="missionaryName" name="missionaryName" placeholder="e.g., Elder Smith" required>
-      </div>
-
-      <div class="form-group">
-        <label for="missionName">Mission</label>
-        <input type="text" id="missionName" name="missionName" placeholder="e.g., Utah Provo Mission" required>
-      </div>
-
-      <div class="form-group">
-        <label for="datesServing">Dates Serving</label>
-        <input type="text" id="datesServing" name="datesServing" placeholder="e.g., Aug 2024 - Aug 2026" required>
-      </div>
-
-      <div class="form-group">
-        <label>Garage Door Size</label>
-        <div class="radio-group">
-          <label><input type="radio" name="garageSize" value="Single" required> Single</label>
-          <label><input type="radio" name="garageSize" value="Double"> Double</label>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Garage Door Material</label>
-        <div class="radio-group">
-          <label><input type="radio" name="garageMaterial" value="Metal" required> Metal</label>
-          <label><input type="radio" name="garageMaterial" value="Wood"> Wood</label>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="posterOption">Front Door Poster</label>
-        <select id="posterOption" name="posterOption" required>
-          <option value="">Select an option...</option>
-          <option value="Wanted">Wanted (Please provide one)</option>
-          <option value="Doing my own thing">Doing my own thing</option>
-        </select>
-      </div>
-
-      <button type="submit">Submit Order & Pay</button>
-    </form>
-
-    <!-- Venmo & Confirmation Section -->
-    <div id="venmo-section">
-      <h2>Order Submitted! 🎉</h2>
-      <p>Thank you for choosing Porch Love Utah! Please complete your payment via Venmo to finalize your reservation.</p>
-      <!-- Replace 'yourvenmohandle' with your actual Venmo username -->
-      <a href="https://venmo.com/yourvenmohandle" target="_blank" class="venmo-button">Pay with Venmo</a>
     </div>
-  </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section">
+    <p class="section-label">Simple Process</p>
+    <h2 class="section-title">How It Works</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Fill Out the Form</h3>
+        <p>Tell us about your missionary, event date, and setup preferences.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Pay via Venmo</h3>
+        <p>Secure your reservation with a quick Venmo payment after submitting.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>We Handle Everything</h3>
+        <p>We drop off, set up, and pick up — you just enjoy the moment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER FORM -->
+  <section class="form-section">
+    <div class="container">
+      <div class="form-header">
+        <h2>Book Your Setup</h2>
+        <p>Fill out the form below and we'll take care of the rest</p>
+      </div>
+      <div class="form-body">
+        <form id="orderForm">
+
+          <div class="form-section-title">Your Information</div>
+
+          <div class="form-group">
+            <label for="customerName">Your Name</label>
+            <input type="text" id="customerName" name="customerName" placeholder="e.g., Jane Smith" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dropoffDate">Date Needed for Drop-off</label>
+              <input type="date" id="dropoffDate" name="dropoffDate" required>
+            </div>
+            <div class="form-group">
+              <label for="pickupDate">Date Needed for Pick-up</label>
+              <input type="date" id="pickupDate" name="pickupDate" required>
+            </div>
+          </div>
+
+          <div class="form-section-title">Missionary Details</div>
+
+          <div class="form-group">
+            <label>Male or Female Missionary</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="gender" value="Elder" required> Elder (Male)
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="gender" value="Sister"> Sister (Female)
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="missionaryName">Missionary Name</label>
+            <input type="text" id="missionaryName" name="missionaryName" placeholder="e.g., Elder Smith" required>
+          </div>
+
+          <div class="form-group">
+            <label for="missionName">Mission</label>
+            <input type="text" id="missionName" name="missionName" placeholder="e.g., Utah Provo Mission" required>
+          </div>
+
+          <div class="form-group">
+            <label for="datesServing">Dates Serving</label>
+            <input type="text" id="datesServing" name="datesServing" placeholder="e.g., Aug 2024 - Aug 2026" required>
+          </div>
+
+          <div class="form-section-title">Setup Preferences</div>
+
+          <div class="form-group">
+            <label>Garage Door Size</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="garageSize" value="Single" required> Single
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="garageSize" value="Double"> Double
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Garage Door Material</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="garageMaterial" value="Metal" required> Metal
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="garageMaterial" value="Wood"> Wood
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="posterOption">Front Door Poster</label>
+            <select id="posterOption" name="posterOption" required>
+              <option value="">Select an option...</option>
+              <option value="Wanted (Please provide one)">Wanted (Please provide one)</option>
+              <option value="Doing my own thing">Doing my own thing</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Additional Notes</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Any special requests or details..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit Order &amp; Pay &#8594;</button>
+        </form>
+
+        <div id="venmo-section">
+          <div class="confirm-icon">&#127881;</div>
+          <h2>Order Submitted!</h2>
+          <p>Thank you for choosing Porch Love Utah! Please complete your payment via Venmo to finalize your reservation.</p>
+          <a href="https://venmo.com/" class="venmo-btn" target="_blank">Pay with Venmo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <strong>Porch Love Utah</strong> &mdash; Serving Utah Valley with love &hearts;
+  </footer>
 
   <script>
-    document.getElementById('orderForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevent page reload
+    // Radio button visual selection
+    document.querySelectorAll('.radio-option').forEach(label => {
+      label.addEventListener('click', function() {
+        const name = this.querySelector('input').name;
+        document.querySelectorAll(`.radio-option input[name="${name}"]`).forEach(inp => {
+          inp.closest('.radio-option').classList.remove('selected');
+        });
+        this.classList.add('selected');
+      });
+    });
 
-      // 1. Collect Form Data
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
       const formData = new FormData(this);
       const data = Object.fromEntries(formData.entries());
-
-      // 2. Send email via your backend (Google Apps Script / Formspree)
-      // NOTE: Replace the URL below with your actual endpoint later.
-              const endpointURL = "https://script.google.com/macros/s/AKfycbyagzPPyu8f9NuOPXwaacDkt44GV6XJAhoQ92xdeUKEuPQYppDFJuzjm3_e52xBxqHN/exec";
-      
-              // LIVE - fetch connected to Google Apps Script backend
+      const endpointURL = "https://script.google.com/macros/s/AKfycbyagzPPyu8f9NuOPXwaacDkt44GV6XJAhoQ92xdeUKEuPQYppDFJuzjm3_e52xBxqHN/exec";
       fetch(endpointURL, {
         method: 'POST', mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify(data)
-      }).then(response => {
+      }).then(() => {
         console.log("Form successfully submitted.");
       }).catch(error => {
         console.error("Error submitting form:", error);
       });
-      
-
-      // 3. Hide the form and show the Venmo payment step
       document.getElementById('orderForm').style.display = 'none';
       document.getElementById('venmo-section').style.display = 'block';
     });
