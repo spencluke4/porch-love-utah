@@ -190,9 +190,9 @@
 
       // 2. Send email via your backend (Google Apps Script / Formspree)
       // NOTE: Replace the URL below with your actual endpoint later.
-      const endpointURL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
+              const endpointURL = "https://script.google.com/macros/s/AKfycbyagzPPyu8f9NuOPXwaacDkt44GV6XJAhoQ92xdeUKEuPQYppDFJuzjm3_e52xBxqHN/exec";
       
-      /* Uncomment this block when you have your backend URL ready
+              // LIVE - fetch connected to Google Apps Script backend
       fetch(endpointURL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -202,7 +202,7 @@
       }).catch(error => {
         console.error("Error submitting form:", error);
       });
-      */
+      
 
       // 3. Hide the form and show the Venmo payment step
       document.getElementById('orderForm').style.display = 'none';
